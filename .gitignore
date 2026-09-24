@@ -1,0 +1,23 @@
+# Sensitive source and generated spreadsheet artifacts
+*.xlsx
+*.xls
+*.xlsm
+*.csv
+*.tsv
+data/
+inputs/
+outputs/
+previews/
+
+# Extracted participant data and local logs
+*.ndjson
+*.log
+*.tmp
+
+# Runtime files
+node_modules/
+__pycache__/
+.venv/
+venv/
+.DS_Store
+Thumbs.db
