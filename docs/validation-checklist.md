@@ -14,9 +14,12 @@ Complete every applicable check before delivering a workbook.
 - [ ] Participant-record count in `Rdata` equals the count parsed from club sheets.
 - [ ] Every source club appears in `Rdata`, its club report, and every weekly overall sheet.
 - [ ] The workbook does not contain `All Clubs Report` or any generic `Week N Comparison` sheet.
+- [ ] Exactly W1, W2, W3, and Overall exist for each of Weight Loss, Fat Loss, and Muscle Gain; no W4 sheet exists.
 - [ ] Every weekly overall sheet includes every participant record from every club.
 - [ ] Repeated participant names remain separate records.
 - [ ] Dates are chronological.
+- [ ] W1 uses available measurements 1→2, W2 uses 2→3, and W3 uses 3→4 for each participant and ranking metric.
+- [ ] Every Overall category sheet uses the participant's original Baseline measurement and final/latest measurement.
 
 ## Calculations
 
@@ -30,14 +33,14 @@ Complete every applicable check before delivering a workbook.
 - [ ] Muscle ranking runs from largest gain to largest loss.
 - [ ] Week 1/2/3 sheets use the first-second, second-third, and third-fourth available numeric Weight readings.
 - [ ] Every comparable weekly interval has Weight Loss, Fat Loss, and Muscle Gain all-club sheets.
-- [ ] Weekly overall reports compare adjacent scheduled slots without skipping missing weeks.
+- [ ] Weekly category reports compare consecutive available numeric readings for the participant and ranking metric.
 - [ ] Weight and Fat weekly sheets sort valid rows from most negative change upward.
 - [ ] Muscle weekly sheets sort valid rows from largest positive change downward.
 - [ ] Participants missing the ranking metric's Previous or Current value are marked `ABSENT` and placed after all valid rows.
 - [ ] Participants are never excluded because they are absent or lack comparison data.
 - [ ] Ties and absent rows use Club Name and Name as deterministic secondary ordering.
 - [ ] The Dashboard contains the required dynamic weekly sections and one Overall section.
-- [ ] With five scheduled dates, the Dashboard contains Week 1, Week 2, Week 3, and Overall.
+- [ ] With five available dates, the Dashboard contains Week 1, Week 2, Week 3, and Overall.
 - [ ] Each Dashboard period contains Weight Loss, Fat Loss, and Muscle Gain Top 3 sections.
 - [ ] Weekly Dashboard names and results match the first three eligible rows in the corresponding detailed weekly sheets.
 - [ ] Dashboard Top 3 sections exclude `ABSENT`, blank, and nonnumeric comparisons.

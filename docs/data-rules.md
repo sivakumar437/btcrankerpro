@@ -43,7 +43,7 @@ Rules:
 - Sort dates ascending for consolidation and comparisons.
 - Use the first and latest available dates separately for Weight, Body Fat, and Muscle.
 - Do not assume that all participants or clubs share the same available dates.
-- For weekly overall sheets, preserve the sequence of scheduled dated columns within each club. Compare adjacent weekly slots and do not skip a missing slot to reach the next numeric reading.
+- For category comparison sheets, order each participant's numeric readings chronologically for the ranking metric. Use consecutive available readings for W1–W3 and the first and final available readings for Overall.
 
 ## Units
 

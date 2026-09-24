@@ -36,7 +36,7 @@ The weekly leader is the participant with the most negative valid change for tha
 
 ### Weekly Overall Reports
 
-For every adjacent scheduled weekly interval, create three complete all-club sheets:
+Create exactly three weekly all-club sheets for each category:
 
 - `W{n}-Weight Loss`
 - `W{n}-Fat Loss`
@@ -44,35 +44,13 @@ For every adjacent scheduled weekly interval, create three complete all-club she
 
 Each sheet contains all participant records and the complete Weight, Fat, Muscle, Age, Height, and attendance information. The three sheets differ only in their ranking parameter, sheet-specific attendance status, sort order, and highlighted ranking column.
 
-Follow [Weekly overall reports](weekly-overall-reports.md) for the required columns, adjacent-week comparison rule, missing-data behavior, sorting, and highlighting.
-
-### Overall 3 Metrics
-
-One row per participant record:
-
-- Club
-- Person
-- Weight Start Date, Weight Start, Weight End Date, Weight End, Weight Change
-- Fat Start Date, Fat Start, Fat End Date, Fat End, Fat Change
-- Muscle Start Date, Muscle Start, Muscle End Date, Muscle End, Muscle Change
-
-For each metric independently, use its first and latest numeric readings. Change is always End minus Start.
-
-### Overall Rankings
-
-Create three separate sections:
-
-1. Weight Loss Ranking — ascending Weight Change.
-2. Fat Loss Ranking — ascending Fat Change.
-3. Muscle Gain Ranking — descending Muscle Change.
-
-Exclude records lacking two numeric readings for the ranked metric. Each row contains Rank, Club, Person, Start Date, End Date, and Change.
+Also create `Overall Weight Loss`, `Overall Fat Loss`, and `Overall Muscle Gain`. Follow [Weekly overall reports](weekly-overall-reports.md) for Baseline logic, consecutive available-measurement comparisons, Overall Baseline-to-latest logic, required columns, missing-data behavior, sorting, and highlighting.
 
 ### Dashboard
 
 Create one `Dashboard` sheet containing the Top 3 Weight Loss, Fat Loss, and Muscle Gain performers for each Dashboard weekly period and for Overall.
 
-The weekly section count is based on the available scheduled measurement dates. With five dates, show Week 1 through Week 3 plus Overall. Overall compares each metric's first/start reading with its latest/end reading; it is not a copy of the final weekly ranking.
+Show at most Week 1 through Week 3 plus Overall. Weekly sections compare consecutive available measurements for each participant and ranking metric. Overall compares each metric's first/start reading with its latest/end reading; it is not a copy of the final weekly ranking.
 
 Follow [Dashboard rules](dashboard-rules.md) for period selection, eligibility, fields, layout, formulas, and validation.
 

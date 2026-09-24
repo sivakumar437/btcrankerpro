@@ -4,15 +4,15 @@ Create one worksheet named `Dashboard` that summarizes the Top 3 performers acro
 
 ## Dashboard reporting periods
 
-Let `N` be the number of scheduled measurement dates in the consolidated data.
+Let `N` be the maximum number of chronologically available measurements.
 
-- Create `max(N - 2, 0)` weekly Dashboard sections.
-- Dashboard Week 1 compares scheduled dates 1 and 2.
-- Dashboard Week 2 compares scheduled dates 2 and 3.
-- Continue with adjacent scheduled dates through Dashboard Week `N - 2`.
-- Create one Overall section comparing the complete reporting period from scheduled date 1 through scheduled date `N`.
+- Create at most three weekly Dashboard sections: `min(3, max(N - 1, 0))`.
+- Dashboard Week 1 compares each participant's available measurements 1 and 2.
+- Dashboard Week 2 compares available measurements 2 and 3.
+- Dashboard Week 3 compares available measurements 3 and 4.
+- Create one Overall section comparing each participant's first available measurement with their final/latest available measurement.
 
-Therefore, five scheduled measurement dates produce:
+Therefore, five available measurement dates produce:
 
 - Week 1: date 1 to date 2;
 - Week 2: date 2 to date 3;
@@ -41,7 +41,7 @@ Each section has Rank 1, Rank 2, and Rank 3 when three eligible participants exi
 - Weekly Top 3 entries must come from the corresponding `W{n}-Weight Loss`, `W{n}-Fat Loss`, or `W{n}-Muscle Gain` sheet.
 - Include only rows whose ranking-metric comparison is valid and whose status is `PRESENT`.
 - Never include `ABSENT`, blank, or nonnumeric comparisons.
-- Overall Top 3 entries must come from the Overall metric data or Overall Rankings and must have valid first and latest numeric readings for that metric.
+- Overall Top 3 entries must come from `Overall Weight Loss`, `Overall Fat Loss`, or `Overall Muscle Gain` and must have valid first and latest numeric readings for that metric.
 - If fewer than three eligible participants exist, leave the unused ranked positions blank.
 
 ## Required fields

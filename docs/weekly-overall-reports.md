@@ -1,14 +1,22 @@
 # Weekly overall reports
 
-Generate three all-club ranking sheets for every comparable weekly interval in the source workbook:
+Generate exactly three weekly all-club ranking sheets and one Overall sheet for each category:
 
 - `W{n}-Weight Loss`
 - `W{n}-Fat Loss`
 - `W{n}-Muscle Gain`
+- `Overall Weight Loss`
+- `Overall Fat Loss`
+- `Overall Muscle Gain`
 
-For example, Week 1 uses the first scheduled measurement slot as Previous and the second scheduled slot as Current. Week 2 uses the second and third slots. Continue with adjacent scheduled slots for every subsequent week.
+For each participant and ranking metric, order the available numeric measurements chronologically. The first available measurement is the Baseline and does not create a separate report.
 
-Do not skip over a missing weekly slot to create a comparison. If either the Previous or Current value required by a sheet is missing or nonnumeric, keep the participant and mark that sheet's status as `ABSENT`.
+- Week 1 compares available measurements 1 and 2.
+- Week 2 compares available measurements 2 and 3.
+- Week 3 compares available measurements 3 and 4.
+- Overall compares available measurement 1 with the final/latest available measurement.
+
+Do not generate Week 4 or later weekly sheets. Overall must never use only the penultimate and latest measurements. If a participant lacks the pair required for a sheet, keep the participant and mark that sheet's status as `ABSENT`.
 
 ## Required population
 
@@ -46,9 +54,9 @@ Age and Height remain visible even though they are not ranking metrics. Preserve
 
 Use End minus Start for all change columns:
 
-- Weight Loss/Gain = Current Week Weight minus Previous Week Weight.
-- Fat Loss/Gain = Current Week Fat % minus Previous Week Fat %.
-- Muscle Gain/Loss = Current Week Muscle minus Previous Week Muscle.
+- Weight Loss/Gain = Current/End Weight minus Previous/Baseline Weight.
+- Fat Loss/Gain = Current/End Fat % minus Previous/Baseline Fat %.
+- Muscle Gain/Loss = Current/End Muscle minus Previous/Baseline Muscle.
 
 Calculate each change only when both required cells for that metric are numeric. Otherwise leave that change blank.
 
@@ -65,6 +73,7 @@ Sorting rules:
 - `W{n}-Weight Loss`: valid rows first, sorted by Weight Loss/Gain ascending so the most negative change, representing the largest loss, appears first.
 - `W{n}-Fat Loss`: valid rows first, sorted by Fat Loss/Gain ascending so the most negative change appears first.
 - `W{n}-Muscle Gain`: valid rows first, sorted by Muscle Gain/Loss descending so the largest positive gain appears first.
+- Apply the same category-specific sorting to each `Overall` sheet using Baseline to latest change.
 - After valid rows, place all `ABSENT` rows at the bottom.
 - Use Club Name and Name as deterministic secondary sort keys when ranking values tie and for the `ABSENT` group.
 
