@@ -12,7 +12,8 @@ Complete every applicable check before delivering a workbook.
 ## Coverage
 
 - [ ] Participant-record count in `Rdata` equals the count parsed from club sheets.
-- [ ] Every source club appears in `Rdata`, its club report, and the all-clubs report.
+- [ ] Every source club appears in `Rdata`, its club report, and every weekly overall sheet.
+- [ ] The workbook does not contain `All Clubs Report` or any generic `Week N Comparison` sheet.
 - [ ] Every weekly overall sheet includes every participant record from every club.
 - [ ] Repeated participant names remain separate records.
 - [ ] Dates are chronological.

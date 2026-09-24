@@ -34,10 +34,6 @@ Change formulas use `current dated reading - previous dated reading`. A change i
 
 The weekly leader is the participant with the most negative valid change for that interval. If no valid negative change exists, show `No loss`; if no valid comparisons exist, show `No data`. Participants without both readings remain represented in the detail as blank or `absent` according to the raw source.
 
-### All Clubs Report
-
-Use the club-report structure, add Club, include every participant record, and add weekly leaders across all clubs.
-
 ### Weekly Overall Reports
 
 For every adjacent scheduled weekly interval, create three complete all-club sheets:
@@ -80,21 +76,9 @@ The weekly section count is based on the available scheduled measurement dates. 
 
 Follow [Dashboard rules](dashboard-rules.md) for period selection, eligibility, fields, layout, formulas, and validation.
 
-### Week 1 Comparison
+### Excluded redundant sheets
 
-Compare each participant's first and second available numeric Weight readings.
-
-### Week 2 Comparison
-
-Compare each participant's second and third available numeric Weight readings.
-
-### Week 3 Comparison
-
-Compare each participant's third and fourth available numeric Weight readings.
-
-Each comparison sheet contains Club, Person, Start Date, Start Weight, End Date, End Weight, and Difference. Sort by Club and then Person. Participants without enough readings remain listed with blank comparison fields.
-
-These comparison sheets are separate from the weekly overall ranking sheets. Do not use their available-reading logic to skip a missing scheduled week in `W{n}-Weight Loss`, `W{n}-Fat Loss`, or `W{n}-Muscle Gain`.
+Do not create `All Clubs Report` or generic `Week N Comparison` sheets. The `W{n}-Weight Loss`, `W{n}-Fat Loss`, and `W{n}-Muscle Gain` sheets already provide the complete all-club weekly comparisons and rankings.
 
 ### Review Flags
 
