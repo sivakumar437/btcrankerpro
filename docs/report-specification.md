@@ -6,6 +6,19 @@
 - Save one new output per run using a monotonically increasing suffix, for example `OVERALL DATA BTC 2 v2.xlsx`.
 - Preserve all original club sheets.
 
+## Worksheet order
+
+Place all generated reader-facing sheets at the front of the workbook. Use this order:
+
+1. `Dashboard`
+2. W1, W2, and W3 category sheets
+3. Overall category sheets
+4. Review and individual club report sheets
+5. Original source club sheets
+6. `Rdata` as the final worksheet
+
+Raw and consolidated source data must never appear before generated reports.
+
 ## Required worksheets
 
 ### Rdata

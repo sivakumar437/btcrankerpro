@@ -8,6 +8,7 @@ Complete every applicable check before delivering a workbook.
 - [ ] Every original club sheet still exists.
 - [ ] Original source values, formulas, notes, structure, and formatting remain unchanged.
 - [ ] The output filename is a new version.
+- [ ] Generated report sheets appear first, `Dashboard` is the first tab, original source sheets appear after reports, and `Rdata` is the final tab.
 
 ## Coverage
 
