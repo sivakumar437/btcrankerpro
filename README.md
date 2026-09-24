@@ -32,6 +32,7 @@ Example request:
 - `.agents/skills/btc-report-generation/SKILL.md` — operational workflow for future report runs.
 - `docs/data-rules.md` — source parsing and data-integrity rules.
 - `docs/report-specification.md` — required worksheets, calculations, and formatting.
+- `docs/weekly-overall-reports.md` — complete weekly all-club Weight, Fat, and Muscle ranking rules.
 - `docs/validation-checklist.md` — acceptance tests before delivery.
 
 ## Privacy

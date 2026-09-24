@@ -13,6 +13,7 @@ Complete every applicable check before delivering a workbook.
 
 - [ ] Participant-record count in `Rdata` equals the count parsed from club sheets.
 - [ ] Every source club appears in `Rdata`, its club report, and the all-clubs report.
+- [ ] Every weekly overall sheet includes every participant record from every club.
 - [ ] Repeated participant names remain separate records.
 - [ ] Dates are chronological.
 
@@ -27,6 +28,13 @@ Complete every applicable check before delivering a workbook.
 - [ ] Weight and Fat rankings run from largest loss to largest gain.
 - [ ] Muscle ranking runs from largest gain to largest loss.
 - [ ] Week 1/2/3 sheets use the first-second, second-third, and third-fourth available numeric Weight readings.
+- [ ] Every comparable weekly interval has Weight Loss, Fat Loss, and Muscle Gain all-club sheets.
+- [ ] Weekly overall reports compare adjacent scheduled slots without skipping missing weeks.
+- [ ] Weight and Fat weekly sheets sort valid rows from most negative change upward.
+- [ ] Muscle weekly sheets sort valid rows from largest positive change downward.
+- [ ] Participants missing the ranking metric's Previous or Current value are marked `ABSENT` and placed after all valid rows.
+- [ ] Participants are never excluded because they are absent or lack comparison data.
+- [ ] Ties and absent rows use Club Name and Name as deterministic secondary ordering.
 
 ## Formula and update behavior
 
@@ -35,6 +43,7 @@ Complete every applicable check before delivering a workbook.
 - [ ] Formula ranges are bounded.
 - [ ] A disposable source-value change updates the linked report and is then restored.
 - [ ] Changing a value that affects a leader or ranking updates the result in the intended Excel engine.
+- [ ] Changing a weekly ranking metric updates its change, status, and sorted position after the intended refresh/recalculation process.
 
 ## Formatting
 
@@ -44,6 +53,7 @@ Complete every applicable check before delivering a workbook.
 - [ ] Dates display as dates, not Excel serial numbers or `####`.
 - [ ] Titles, headers, names, numbers, and notes are not clipped.
 - [ ] Every new report sheet has been rendered and visually inspected.
+- [ ] Each weekly overall sheet visibly highlights only its primary ranking column.
 
 ## Errors and flags
 

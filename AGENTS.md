@@ -11,6 +11,8 @@ For any workbook-generation or workbook-validation task, read these files before
 3. `docs/report-specification.md`
 4. `docs/validation-checklist.md`
 
+For weekly all-club ranking sheets, also read `docs/weekly-overall-reports.md` completely.
+
 Treat those files as the repository's persistent memory for BTC reports.
 
 ## Non-negotiable safeguards

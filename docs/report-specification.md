@@ -38,6 +38,18 @@ The weekly leader is the participant with the most negative valid change for tha
 
 Use the club-report structure, add Club, include every participant record, and add weekly leaders across all clubs.
 
+### Weekly Overall Reports
+
+For every adjacent scheduled weekly interval, create three complete all-club sheets:
+
+- `W{n}-Weight Loss`
+- `W{n}-Fat Loss`
+- `W{n}-Muscle Gain`
+
+Each sheet contains all participant records and the complete Weight, Fat, Muscle, Age, Height, and attendance information. The three sheets differ only in their ranking parameter, sheet-specific attendance status, sort order, and highlighted ranking column.
+
+Follow [Weekly overall reports](weekly-overall-reports.md) for the required columns, adjacent-week comparison rule, missing-data behavior, sorting, and highlighting.
+
 ### Overall 3 Metrics
 
 One row per participant record:
@@ -73,6 +85,8 @@ Compare each participant's second and third available numeric Weight readings.
 Compare each participant's third and fourth available numeric Weight readings.
 
 Each comparison sheet contains Club, Person, Start Date, Start Weight, End Date, End Weight, and Difference. Sort by Club and then Person. Participants without enough readings remain listed with blank comparison fields.
+
+These comparison sheets are separate from the weekly overall ranking sheets. Do not use their available-reading logic to skip a missing scheduled week in `W{n}-Weight Loss`, `W{n}-Fat Loss`, or `W{n}-Muscle Gain`.
 
 ### Review Flags
 
