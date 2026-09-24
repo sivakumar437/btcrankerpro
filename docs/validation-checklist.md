@@ -35,6 +35,13 @@ Complete every applicable check before delivering a workbook.
 - [ ] Participants missing the ranking metric's Previous or Current value are marked `ABSENT` and placed after all valid rows.
 - [ ] Participants are never excluded because they are absent or lack comparison data.
 - [ ] Ties and absent rows use Club Name and Name as deterministic secondary ordering.
+- [ ] The Dashboard contains the required dynamic weekly sections and one Overall section.
+- [ ] With five scheduled dates, the Dashboard contains Week 1, Week 2, Week 3, and Overall.
+- [ ] Each Dashboard period contains Weight Loss, Fat Loss, and Muscle Gain Top 3 sections.
+- [ ] Weekly Dashboard names and results match the first three eligible rows in the corresponding detailed weekly sheets.
+- [ ] Dashboard Top 3 sections exclude `ABSENT`, blank, and nonnumeric comparisons.
+- [ ] Overall Dashboard rankings use each metric's first/start and latest/end applicable readings.
+- [ ] Missing Dashboard Age or Height displays as `NA`, not zero.
 
 ## Formula and update behavior
 
@@ -44,6 +51,7 @@ Complete every applicable check before delivering a workbook.
 - [ ] A disposable source-value change updates the linked report and is then restored.
 - [ ] Changing a value that affects a leader or ranking updates the result in the intended Excel engine.
 - [ ] Changing a weekly ranking metric updates its change, status, and sorted position after the intended refresh/recalculation process.
+- [ ] Dashboard formulas update from their linked weekly and overall datasets after recalculation or the documented ranking refresh.
 
 ## Formatting
 
@@ -54,6 +62,7 @@ Complete every applicable check before delivering a workbook.
 - [ ] Titles, headers, names, numbers, and notes are not clipped.
 - [ ] Every new report sheet has been rendered and visually inspected.
 - [ ] Each weekly overall sheet visibly highlights only its primary ranking column.
+- [ ] Dashboard periods and categories are clearly separated, change columns are highlighted, and all Top 3 fields are unclipped.
 
 ## Errors and flags
 

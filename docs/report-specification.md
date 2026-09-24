@@ -72,6 +72,14 @@ Create three separate sections:
 
 Exclude records lacking two numeric readings for the ranked metric. Each row contains Rank, Club, Person, Start Date, End Date, and Change.
 
+### Dashboard
+
+Create one `Dashboard` sheet containing the Top 3 Weight Loss, Fat Loss, and Muscle Gain performers for each Dashboard weekly period and for Overall.
+
+The weekly section count is based on the available scheduled measurement dates. With five dates, show Week 1 through Week 3 plus Overall. Overall compares each metric's first/start reading with its latest/end reading; it is not a copy of the final weekly ranking.
+
+Follow [Dashboard rules](dashboard-rules.md) for period selection, eligibility, fields, layout, formulas, and validation.
+
 ### Week 1 Comparison
 
 Compare each participant's first and second available numeric Weight readings.

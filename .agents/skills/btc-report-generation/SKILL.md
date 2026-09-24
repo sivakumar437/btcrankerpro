@@ -17,6 +17,8 @@ Read completely:
 
 For any weekly all-club ranking request, also read `../../../docs/weekly-overall-reports.md` completely.
 
+For any management summary or Top 3 Dashboard request, also read `../../../docs/dashboard-rules.md` completely.
+
 Use the available spreadsheet-authoring skill and its required artifact tooling. The repository documents business rules; the spreadsheet skill governs safe workbook editing, formulas, rendering, and export.
 
 ## Workflow
@@ -31,12 +33,13 @@ Use the available spreadsheet-authoring skill and its required artifact tooling.
 8. Build club and consolidated reports from `Rdata` with bounded formulas.
 9. Build Overall 3 Metrics, rankings, and Week 1/2/3 comparisons.
 10. Build the three complete all-club weekly ranking sheets for every comparable interval as defined in `weekly-overall-reports.md`.
-11. Add conditional formatting for the required sign/color semantics and highlight each weekly sheet's ranking column.
-12. Add `Review Flags` for preserved unusual values.
-13. Recalculate once after authoring.
-14. Run every item in `validation-checklist.md`, including formula-error scanning and representative independent calculations.
-15. Render and visually inspect every newly created sheet. Correct clipped headers, serial-number dates, unreadable text, and excessive whitespace.
-16. Export one new versioned workbook. Never overwrite the source.
+11. Build the Dashboard from the corresponding detailed weekly and Overall datasets when required by `dashboard-rules.md`.
+12. Add conditional formatting for the required sign/color semantics and highlight each weekly sheet's ranking column.
+13. Add `Review Flags` for preserved unusual values.
+14. Recalculate once after authoring.
+15. Run every item in `validation-checklist.md`, including formula-error scanning and representative independent calculations.
+16. Render and visually inspect every newly created sheet. Correct clipped headers, serial-number dates, unreadable text, and excessive whitespace.
+17. Export one new versioned workbook. Never overwrite the source.
 
 ## Required implementation behavior
 
@@ -47,6 +50,7 @@ Use the available spreadsheet-authoring skill and its required artifact tooling.
 - Rank Weight and Fat ascending by change; rank Muscle descending.
 - Comparison sheets use available-reading order, not assumed calendar-week positions.
 - Weekly overall ranking sheets use adjacent scheduled weekly slots and never skip a missing slot. Keep all participants, mark metric-specific missing comparisons `ABSENT`, and place them after valid ranked rows.
+- Dashboard Top 3 tables link to eligible detailed weekly and Overall data, exclude absent comparisons, show `NA` for missing Age or Height, and follow the period-count rule in `dashboard-rules.md`.
 - Where an input change can alter attendance patterns or ranking order, use formulas or a documented refresh process that updates the result correctly.
 
 ## Delivery note

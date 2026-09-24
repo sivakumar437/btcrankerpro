@@ -33,6 +33,7 @@ Example request:
 - `docs/data-rules.md` — source parsing and data-integrity rules.
 - `docs/report-specification.md` — required worksheets, calculations, and formatting.
 - `docs/weekly-overall-reports.md` — complete weekly all-club Weight, Fat, and Muscle ranking rules.
+- `docs/dashboard-rules.md` — weekly and Overall Top 3 management Dashboard rules.
 - `docs/validation-checklist.md` — acceptance tests before delivery.
 
 ## Privacy
