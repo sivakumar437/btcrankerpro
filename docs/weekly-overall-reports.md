@@ -1,33 +1,29 @@
 # Weekly overall reports
 
-Generate exactly three weekly all-club ranking sheets and one Overall sheet for each category:
+Generate exactly three weekly all-club ranking sheets for each category, plus one Overall Weight Loss sheet:
 
 - `W{n}-Weight Loss`
 - `W{n}-Fat Loss`
 - `W{n}-Muscle Gain`
 - `Overall Weight Loss`
-- `Overall Fat Loss`
-- `Overall Muscle Gain`
 
-For each participant and ranking metric, order the available numeric measurements chronologically. The first available measurement is the Baseline and does not create a separate report.
+Weekly comparisons use the workbook's chronological scheduled measurement dates. The first scheduled date is the Baseline and does not create a separate report.
 
-- Week 1 compares available measurements 1 and 2.
-- Week 2 compares available measurements 2 and 3.
-- Week 3 compares available measurements 3 and 4.
-- Overall compares available measurement 1 with the final/latest available measurement.
+- Week 1 compares scheduled dates 1 and 2.
+- Week 2 compares scheduled dates 2 and 3.
+- Week 3 compares scheduled dates 3 and 4.
+- Overall Weight Loss compares the participant's first available numeric Weight with the final/latest available numeric Weight.
 
-Do not generate Week 4 or later weekly sheets. Overall must never use only the penultimate and latest measurements. If a participant lacks the pair required for a sheet, keep the participant and mark that sheet's status as `ABSENT`.
+Do not generate Week 4 or later weekly sheets. Overall must never use only the penultimate and latest measurements. If either scheduled reading for a weekly sheet's ranking metric is missing or nonnumeric, omit that participant from that weekly sheet entirely.
 
 ## Required population
 
-Every sheet contains every participant record from every club, including:
+Every weekly category sheet contains all participants eligible for that category and interval, including:
 
-- participants with valid comparisons;
-- participants with partially missing measurements;
-- participants with no measurements;
+- participants with both scheduled numeric readings for the ranking metric;
 - repeated names that exist as separate source records.
 
-Never limit these sheets to a Top 10, Top 20, winners, or any other subset.
+Never limit eligible participants to a Top 10, Top 20, winners, or any other ranking subset. Participants lacking either required scheduled reading are excluded by eligibility, not rank.
 
 ## Required columns
 
@@ -60,24 +56,27 @@ Use End minus Start for all change columns:
 
 Calculate each change only when both required cells for that metric are numeric. Otherwise leave that change blank.
 
+Apply a realism screen after calculation. If `ABS(Current - Previous) / ABS(Previous)` exceeds 5% for a weekly comparison, mark the result `REVIEW` and exclude it from ranking. For Overall Weight Loss, use a 20% Baseline-to-Final threshold. Keep the participant and original measurements visible, place `REVIEW` rows after eligible rows, and record the result in `Review Flags`.
+
 ## Sheet-specific attendance and sorting
 
-Attendance/Status is evaluated against the ranking metric for that sheet:
+Attendance/Status is evaluated against the ranking metric for that sheet. Because ineligible participants are omitted, every retained weekly row is `PRESENT`:
 
-- Weight Loss sheet: `PRESENT` only when Previous and Current Weight are numeric; otherwise `ABSENT`.
-- Fat Loss sheet: `PRESENT` only when Previous and Current Fat are numeric; otherwise `ABSENT`.
-- Muscle Gain sheet: `PRESENT` only when Previous and Current Muscle are numeric; otherwise `ABSENT`.
+- Weight Loss sheet: include only when Previous and Current Weight are numeric.
+- Fat Loss sheet: include only when Previous and Current Fat are numeric.
+- Muscle Gain sheet: include only when Previous and Current Muscle are numeric.
 
 Sorting rules:
 
 - `W{n}-Weight Loss`: valid rows first, sorted by Weight Loss/Gain ascending so the most negative change, representing the largest loss, appears first.
 - `W{n}-Fat Loss`: valid rows first, sorted by Fat Loss/Gain ascending so the most negative change appears first.
 - `W{n}-Muscle Gain`: valid rows first, sorted by Muscle Gain/Loss descending so the largest positive gain appears first.
-- Apply the same category-specific sorting to each `Overall` sheet using Baseline to latest change.
-- After valid rows, place all `ABSENT` rows at the bottom.
-- Use Club Name and Name as deterministic secondary sort keys when ranking values tie and for the `ABSENT` group.
+- Sort `Overall Weight Loss` by Baseline-to-latest Weight change ascending.
+- Use Club Name and Name as deterministic secondary sort keys when ranking values tie.
+- Before Club Name and Name, resolve primary-metric ties with valid, non-flagged changes from the same comparison interval: Weight Loss → Muscle Gain → Fat Loss; Fat Loss → Weight Loss → Muscle Gain; Muscle Gain → Weight Loss → Fat Loss. Weight and Fat sort toward the more negative change; Muscle sorts toward the more positive change.
+- Place `REVIEW` rows after all eligible ranked rows and never include them in Dashboard winners.
 
-A participant can be `PRESENT` on one sheet and `ABSENT` on another during the same week because status depends on that sheet's ranking metric. Non-ranking metric changes may remain blank without making the participant absent from that sheet.
+A participant can appear on one category sheet and be omitted from another during the same week because eligibility depends on that sheet's ranking metric. Non-ranking metric changes may remain blank without making the participant ineligible for that sheet.
 
 ## Highlighting
 

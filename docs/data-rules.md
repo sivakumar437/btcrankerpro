@@ -36,6 +36,7 @@ Rules:
 - Never coerce source text to zero.
 - Never interpolate, carry forward, average, or invent a missing measurement.
 - Age and Height may be linked from their single available source cells. They are not used to infer missing metric readings.
+- Preserve numeric outliers exactly as entered. For ranking eligibility, flag absolute relative changes above 5% for a weekly comparison and above 20% for Baseline-to-Final Overall. Do not correct the source value automatically.
 
 ## Dates
 
@@ -43,7 +44,7 @@ Rules:
 - Sort dates ascending for consolidation and comparisons.
 - Use the first and latest available dates separately for Weight, Body Fat, and Muscle.
 - Do not assume that all participants or clubs share the same available dates.
-- For category comparison sheets, order each participant's numeric readings chronologically for the ranking metric. Use consecutive available readings for W1–W3 and the first and final available readings for Overall.
+- Weekly category comparisons use the workbook's adjacent scheduled date slots: W1 is dates 1→2, W2 is dates 2→3, and W3 is dates 3→4. Do not jump over a missing scheduled reading. Omit the participant from that weekly category sheet unless both scheduled readings for its ranking metric are numeric. Overall continues to use the participant's first and final available numeric readings.
 
 ## Units
 

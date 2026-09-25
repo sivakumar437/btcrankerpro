@@ -11,8 +11,8 @@
 Place all generated reader-facing sheets at the front of the workbook. Use this order:
 
 1. `Dashboard`
-2. W1, W2, and W3 category sheets
-3. Overall category sheets
+2. `Overall Weight Loss`
+3. W1, W2, and W3 category sheets
 4. Review and individual club report sheets
 5. Original source club sheets
 6. `Rdata` as the final worksheet
@@ -55,15 +55,15 @@ Create exactly three weekly all-club sheets for each category:
 - `W{n}-Fat Loss`
 - `W{n}-Muscle Gain`
 
-Each sheet contains all participant records and the complete Weight, Fat, Muscle, Age, Height, and attendance information. The three sheets differ only in their ranking parameter, sheet-specific attendance status, sort order, and highlighted ranking column.
+Each weekly sheet contains all participants eligible for that category and scheduled interval, with the complete available Weight, Fat, Muscle, Age, Height, and attendance information. Eligibility requires numeric Previous and Current readings for the sheet's ranking metric. The three sheets differ in their ranking parameter, eligible population, sort order, and highlighted ranking column.
 
-Also create `Overall Weight Loss`, `Overall Fat Loss`, and `Overall Muscle Gain`. Follow [Weekly overall reports](weekly-overall-reports.md) for Baseline logic, consecutive available-measurement comparisons, Overall Baseline-to-latest logic, required columns, missing-data behavior, sorting, and highlighting.
+Also create `Overall Weight Loss`. Do not create `Overall Fat Loss` or `Overall Muscle Gain`. Follow [Weekly overall reports](weekly-overall-reports.md) for Baseline logic, scheduled week-to-week comparisons, Overall Baseline-to-latest Weight logic, required columns, missing-data behavior, sorting, and highlighting.
 
 ### Dashboard
 
-Create one `Dashboard` sheet containing the Top 3 Weight Loss, Fat Loss, and Muscle Gain performers for each Dashboard weekly period and for Overall.
+Create one `Dashboard` sheet containing Top 3 Weight Loss, Fat Loss, and Muscle Gain performers for each weekly period, plus Overall Weight Loss Top 5 only.
 
-Show at most Week 1 through Week 3 plus Overall. Weekly sections compare consecutive available measurements for each participant and ranking metric. Overall compares each metric's first/start reading with its latest/end reading; it is not a copy of the final weekly ranking.
+Show at most Week 1 through Week 3 plus Overall. Weekly sections compare adjacent scheduled dates and omit a participant from a category when either required ranking-metric reading is unavailable. Overall compares first/start Weight with latest/end Weight; it is not a copy of the final weekly ranking.
 
 Follow [Dashboard rules](dashboard-rules.md) for period selection, eligibility, fields, layout, formulas, and validation.
 
