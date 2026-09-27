@@ -10,12 +10,14 @@ For any workbook-generation or workbook-validation task, read these files before
 2. `docs/data-rules.md`
 3. `docs/report-specification.md`
 4. `docs/validation-checklist.md`
+5. `docs/final-ranking-rules.md`
 
 For weekly all-club ranking sheets, also read `docs/weekly-overall-reports.md` completely.
 
 For Top 3 management summaries, also read `docs/dashboard-rules.md` completely.
 
 Treat those files as the repository's persistent memory for BTC reports.
+When another document conflicts with `docs/final-ranking-rules.md`, the final rules file takes precedence.
 
 ## Non-negotiable safeguards
 

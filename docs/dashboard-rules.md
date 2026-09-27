@@ -1,6 +1,6 @@
 # Dashboard rules
 
-Create one worksheet named `Dashboard` that summarizes weekly Top 3 performers across all clubs and an Overall Weight Loss Top 5.
+Create one `Dashboard` summarizing weekly Top 3 performers, Overall Weight Loss Top 5, Overall Fat Loss Top 3, and Overall Muscle Gain Top 3.
 
 ## Dashboard reporting periods
 
@@ -10,7 +10,7 @@ Let `N` be the maximum number of chronologically available measurements.
 - Dashboard Week 1 compares scheduled dates 1 and 2.
 - Dashboard Week 2 compares scheduled dates 2 and 3.
 - Dashboard Week 3 compares scheduled dates 3 and 4.
-- Create one Overall Weight Loss section comparing each participant's first available Weight with their final/latest available Weight.
+- Create Overall sections comparing Baseline with the defined Final Week for each metric. Never substitute an earlier reading.
 
 Therefore, five available measurement dates produce:
 
@@ -31,22 +31,21 @@ Every weekly Dashboard period contains three sections:
 
 Each section has Rank 1, Rank 2, and Rank 3 when three eligible participants exist.
 
-The Overall Dashboard period contains only `Overall Weight Loss - Top 5`. Do not create Overall Fat Loss or Overall Muscle Gain Dashboard tables.
+The Overall period contains Weight Loss Top 5, Fat Loss Top 3, and Muscle Gain Top 3.
 
 - Weight Loss uses the most negative valid Weight change first.
 - Fat Loss uses the most negative valid Fat change first.
 - Muscle Gain uses the largest positive valid Muscle change first.
 - Use the same tie ordering as the corresponding detailed ranking data.
-- When two displayed Dashboard results tie, add an Excel comment to each affected Rank cell explaining why one position ranks above the other. Name the deciding secondary metric and both values; if every applicable metric remains tied, identify Club/Name alphabetical order as the fallback.
-- Tie order is category-specific: Weight Loss uses Muscle Gain then Fat Loss; Fat Loss uses Weight Loss then Muscle Gain; Muscle Gain uses Weight Loss then Fat Loss. Only valid, non-flagged secondary changes qualify.
+- When displayed primary results tie, explain the priority or supporting metric that decided the order. If the complete category tuple ties, assign the same rank and mark manual prize review.
+- Use the priority and complete category tie tuples in `final-ranking-rules.md`.
 
 ## Eligibility
 
 - Weekly Top 3 entries must come from the corresponding `W{n}-Weight Loss`, `W{n}-Fat Loss`, or `W{n}-Muscle Gain` sheet.
-- Include only rows whose ranking metric is numeric at both scheduled dates and whose status is `PRESENT`.
-- Participants missing either scheduled ranking-metric reading are omitted from the corresponding detailed weekly sheet and cannot appear on the Dashboard.
-- Exclude results marked `REVIEW` by the realism screen: more than 5% absolute relative weekly change, or more than 20% absolute relative Overall Weight change.
-- Overall Top 5 entries must come from `Overall Weight Loss` and must have valid first and latest numeric Weight readings.
+- Include only detailed rows with Final Status `VALID`.
+- REVIEW, OUTLIER, and INVALID rows remain on detailed sheets but cannot appear on the Dashboard.
+- Overall entries must come from the corresponding Overall category sheet and use Baseline and defined Final Week values.
 - If fewer than three eligible participants exist, leave the unused ranked positions blank.
 
 ## Required fields
@@ -69,7 +68,7 @@ Display `NA` when Age or Height is unavailable. Do not convert missing measureme
 - Weekly Weight Change = Current Weight minus Previous Weight.
 - Weekly Fat Change = Current Fat minus Previous Fat.
 - Weekly Muscle Change = Current Muscle minus Previous Muscle.
-- Overall Weight change uses End Weight minus Start Weight.
+- Overall changes use defined Final Week minus Baseline for the relevant metric.
 
 The Dashboard should link to the detailed weekly and overall datasets rather than hardcoding participant names or calculated results.
 

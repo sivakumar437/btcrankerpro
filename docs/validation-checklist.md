@@ -15,12 +15,15 @@ Complete every applicable check before delivering a workbook.
 - [ ] Participant-record count in `Rdata` equals the count parsed from club sheets.
 - [ ] Every source club appears in `Rdata` and its club report; weekly category sheets include every eligible participant from every club.
 - [ ] The workbook does not contain `All Clubs Report` or any generic `Week N Comparison` sheet.
-- [ ] Exactly W1, W2, and W3 exist for Weight Loss, Fat Loss, and Muscle Gain; only `Overall Weight Loss` exists; no W4, `Overall Fat Loss`, or `Overall Muscle Gain` sheet exists.
-- [ ] Every weekly category sheet includes every participant whose ranking metric has numeric readings at both scheduled comparison dates.
+- [ ] Exactly W1, W2, W3, and Overall exist for Weight Loss, Fat Loss, and Muscle Gain; no W4 exists.
+- [ ] Every detailed category sheet contains the complete participant population.
 - [ ] Repeated participant names remain separate records.
 - [ ] Dates are chronological.
 - [ ] W1 uses scheduled dates 1→2, W2 uses 2→3, and W3 uses 3→4 for each participant and ranking metric without skipping missing dates.
-- [ ] `Overall Weight Loss` uses the participant's original Baseline Weight and final/latest Weight.
+- [ ] Every Overall category uses Baseline and the defined Final Week without earlier-week substitution.
+- [ ] Weight Gain candidate count equals explicit registrations plus unique Baseline-rule candidates after matching existing participants without duplication.
+- [ ] Every Weight Gain candidate is visible but INVALID and unranked on all Weight Loss sheets.
+- [ ] `Weight Gain`, W1/W2/W3 Weight Gain, and Overall Weight Gain contain the complete candidate population.
 
 ## Calculations
 
@@ -29,7 +32,7 @@ Complete every applicable check before delivering a workbook.
 - [ ] Weight, Fat, and Muscle use independent first/latest numeric readings.
 - [ ] Missing or text readings do not become zero.
 - [ ] Weekly leaders exclude blank, `absent`, and other nonnumeric cells.
-- [ ] Rankings exclude records with fewer than two numeric readings for that metric.
+- [ ] Missing any required endpoint measurement produces INVALID and no rank while remaining visible.
 - [ ] Weight and Fat rankings run from largest loss to largest gain.
 - [ ] Muscle ranking runs from largest gain to largest loss.
 - [ ] Week 1/2/3 sheets use the first-second, second-third, and third-fourth scheduled readings.
@@ -37,19 +40,21 @@ Complete every applicable check before delivering a workbook.
 - [ ] Weekly category reports compare adjacent scheduled readings for the participant and ranking metric.
 - [ ] Weight and Fat weekly sheets sort valid rows from most negative change upward.
 - [ ] Muscle weekly sheets sort valid rows from largest positive change downward.
-- [ ] Participants missing either scheduled ranking-metric reading are omitted from that weekly category sheet.
-- [ ] No retained weekly row has a blank/nonnumeric ranking comparison or `ABSENT` status.
-- [ ] Weekly results above 5% absolute relative change are marked `REVIEW`, placed after eligible rows, listed in `Review Flags`, and excluded from rankings.
-- [ ] Overall Weight results above 20% absolute relative change are marked `REVIEW`, listed in `Review Flags`, and excluded from rankings.
-- [ ] Ties use Club Name and Name as deterministic secondary ordering.
-- [ ] Primary ties use the required cross-metric order before Club Name and Name: Weight→Muscle→Fat, Fat→Weight→Muscle, and Muscle→Weight→Fat.
-- [ ] Every displayed primary tie on the Dashboard has Rank-cell comments identifying the deciding secondary metric and compared values, or the Club/Name alphabetical fallback.
+- [ ] REVIEW, OUTLIER, and INVALID rows remain visible below VALID rows and receive no rank.
+- [ ] Weekly absolute changes above 4 kg Weight, 3 Fat points, or 3 Muscle points are OUTLIER; exact boundaries remain eligible.
+- [ ] Overall does not apply weekly outlier limits.
+- [ ] Sorting applies primary change, category Priority, and supporting changes in the required order.
+- [ ] Complete sort-tuple ties receive the same rank and manual prize review rather than an alphabetical rank decision.
+- [ ] Every displayed primary tie explains its deciding priority/supporting metric; complete tuple ties share a rank and require manual prize review.
+- [ ] Weight Gain quality tiers order positive Weight plus positive Muscle first, then positive Weight only, positive Muscle only, and no positive gain; each tier sorts Weight Change then Muscle Change descending.
+- [ ] Weight Gain `REVIEW` rows follow ranked rows and `ABSENT / NO DATA` rows are last.
+- [ ] Weight Gain summary Start/Latest values and changes reconcile to `Overall Weight Gain`.
 - [ ] The Dashboard contains the required dynamic weekly sections and one Overall section.
 - [ ] With five available dates, the Dashboard contains Week 1, Week 2, Week 3, and Overall.
-- [ ] Each weekly Dashboard period contains Weight Loss, Fat Loss, and Muscle Gain Top 3 sections; Overall contains Weight Loss Top 5 only.
+- [ ] Each weekly Dashboard period contains three Top 3 sections; Overall contains Weight Loss Top 5, Fat Loss Top 3, and Muscle Gain Top 3.
 - [ ] Weekly Dashboard names and results match the first three eligible rows in the corresponding detailed weekly sheets.
-- [ ] Dashboard Top 3 sections exclude `ABSENT`, blank, and nonnumeric comparisons.
-- [ ] Overall Dashboard rankings use first/start and latest/end applicable Weight readings only.
+- [ ] Dashboard rankings contain only VALID detailed rows.
+- [ ] Overall Dashboard rankings use Baseline and defined Final Week values only.
 - [ ] Missing Dashboard Age or Height displays as `NA`, not zero.
 
 ## Formula and update behavior

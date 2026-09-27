@@ -35,6 +35,7 @@ Example request:
 - `docs/weekly-overall-reports.md` — complete weekly all-club Weight, Fat, and Muscle ranking rules.
 - `docs/dashboard-rules.md` — weekly and Overall Top 3 management Dashboard rules.
 - `docs/validation-checklist.md` — acceptance tests before delivery.
+- `docs/final-ranking-rules.md` — final v11 rules in plain language, including edge cases and unresolved assumptions.
 
 ## Privacy
 

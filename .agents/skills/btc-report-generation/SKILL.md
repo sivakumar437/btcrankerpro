@@ -14,6 +14,7 @@ Read completely:
 - `../../../docs/data-rules.md`
 - `../../../docs/report-specification.md`
 - `../../../docs/validation-checklist.md`
+- `../../../docs/final-ranking-rules.md`
 
 For any weekly all-club ranking request, also read `../../../docs/weekly-overall-reports.md` completely.
 
@@ -31,15 +32,16 @@ Use the available spreadsheet-authoring skill and its required artifact tooling.
 6. Import the source workbook and add the required sheets. Do not edit original sheets.
 7. Build `Rdata` first with direct source formulas.
 8. Build club and consolidated reports from `Rdata` with bounded formulas.
-9. Build Week 1/2/3 comparisons for all three metrics and build Overall Weight Loss only.
-10. Build the three complete all-club weekly ranking sheets for every comparable interval as defined in `weekly-overall-reports.md`.
-11. Build the Dashboard from the corresponding detailed weekly and Overall datasets when required by `dashboard-rules.md`.
-12. Add conditional formatting for the required sign/color semantics and highlight each weekly sheet's ranking column.
-13. Add `Review Flags` for preserved unusual values.
-14. Recalculate once after authoring.
-15. Run every item in `validation-checklist.md`, including formula-error scanning and representative independent calculations.
-16. Render and visually inspect every newly created sheet. Correct clipped headers, serial-number dates, unreadable text, and excessive whitespace.
-17. Export one new versioned workbook. Never overwrite the source.
+9. Build W1/W2/W3 and Overall comparisons for Weight Loss, Fat Loss, and Muscle Gain.
+10. Identify Weight Gain candidates from explicit registrations plus `Baseline Weight < Height - 105`, exclude them from Weight Loss sheets, and build the Weight Gain summary and W1/W2/W3/Overall Weight Gain rankings when requested.
+11. Build the three complete all-club weekly ranking sheets for every comparable interval as defined in `weekly-overall-reports.md`.
+12. Build the Dashboard from the corresponding detailed weekly and Overall datasets when required by `dashboard-rules.md`.
+13. Add conditional formatting for the required sign/color semantics and highlight each weekly sheet's ranking column.
+14. Add `Review Flags` for preserved unusual values.
+15. Recalculate once after authoring.
+16. Run every item in `validation-checklist.md`, including formula-error scanning and representative independent calculations.
+17. Render and visually inspect every newly created sheet. Correct clipped headers, serial-number dates, unreadable text, and excessive whitespace.
+18. Export one new versioned workbook. Never overwrite the source.
 
 ## Required implementation behavior
 
@@ -48,12 +50,13 @@ Use the available spreadsheet-authoring skill and its required artifact tooling.
 - Keep missing values blank and explicit `absent` markers nonnumeric.
 - Use direct source or `Rdata` references instead of hardcoded calculated results.
 - Rank Weight and Fat ascending by change; rank Muscle descending.
-- Comparison sheets use available-reading order, not assumed calendar-week positions.
-- Weekly category sheets use adjacent scheduled weekly slots and never skip a missing slot. Include a participant on a weekly category sheet only when both scheduled readings for that sheet's ranking metric are numeric; otherwise omit that participant from that sheet for the week.
-- Dashboard weekly Top 3 tables link to eligible detailed weekly data; Overall shows Weight Loss Top 5 only. Exclude absent comparisons, show `NA` for missing Age or Height, and follow `dashboard-rules.md`.
-- Apply the realism screen before ranking: weekly absolute relative change above 5% of the previous value is `REVIEW`; Overall absolute relative change above 20% of Baseline is `REVIEW`. Preserve the source values, list the result in `Review Flags`, and exclude it from rankings.
-- Resolve equal primary results with valid, non-flagged secondary changes: Weight Loss ties use Muscle Gain then Fat Loss; Fat Loss ties use Weight Loss then Muscle Gain; Muscle Gain ties use Weight Loss then Fat Loss. Use Club and Name only after all applicable metrics remain tied.
-- For every displayed primary-result tie on the Dashboard, add an Excel comment to the affected Rank cells that states the tied result and the secondary metric and values that decided the order. If all applicable metrics tie, state that Club/Name alphabetical order decided it.
+- Comparison sheets use the defined scheduled slots: Baseline, Week 1, Week 2, Week 3, and Final.
+- Keep every participant visible on every detailed category sheet. Missing endpoint data is `INVALID` and receives no rank.
+- Dashboard weekly Top 3 tables and Overall Top lists link to VALID rows in their corresponding detailed datasets. Show `NA` for missing Age or Height and follow `dashboard-rules.md`.
+- For W1-W3 only, mark OUTLIER when absolute Weight change is greater than 4 kg, Fat change is greater than 3 points, or Muscle change is greater than 3 points. Exact limits are valid. Do not apply these limits to Overall.
+- Apply the category priorities and complete tie tuples in `final-ranking-rules.md`. A complete tuple tie receives the same rank and manual prize review; Club and Name are display ordering only.
+- For every displayed primary-result tie, add a note or comment stating the priority/supporting metric that decided the order. If the complete tuple ties, assign the same rank and state that manual prize review is required.
+- Weight Gain candidates are explicit registrations or participants whose Baseline Weight is below `Height - 105`. Keep them visible but INVALID on Weight Loss sheets. Rank the separate Weight Gain category by: positive Weight plus positive Muscle first, then positive Weight without positive Muscle, then positive Muscle without positive Weight, then remaining valid comparisons. Within a tier, sort Weight Gain descending, then Muscle Gain descending.
 - Where an input change can alter attendance patterns or ranking order, use formulas or a documented refresh process that updates the result correctly.
 
 ## Delivery note

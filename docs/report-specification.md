@@ -11,11 +11,12 @@
 Place all generated reader-facing sheets at the front of the workbook. Use this order:
 
 1. `Dashboard`
-2. `Overall Weight Loss`
-3. W1, W2, and W3 category sheets
-4. Review and individual club report sheets
-5. Original source club sheets
-6. `Rdata` as the final worksheet
+2. `Overall-Weight Loss`, `Overall-Fat Loss`, and `Overall-Muscle Gain`
+3. Weight Gain summary and Overall Weight Gain when applicable
+4. W1, W2, and W3 category sheets, including Weight Gain when applicable
+5. Review and individual club report sheets
+6. Original source club sheets
+7. `Rdata` as the final worksheet
 
 Raw and consolidated source data must never appear before generated reports.
 
@@ -55,15 +56,27 @@ Create exactly three weekly all-club sheets for each category:
 - `W{n}-Fat Loss`
 - `W{n}-Muscle Gain`
 
-Each weekly sheet contains all participants eligible for that category and scheduled interval, with the complete available Weight, Fat, Muscle, Age, Height, and attendance information. Eligibility requires numeric Previous and Current readings for the sheet's ranking metric. The three sheets differ in their ranking parameter, eligible population, sort order, and highlighted ranking column.
+Each weekly and Overall sheet contains every participant. VALID rows are ranked first; REVIEW, OUTLIER, and INVALID rows remain visible below them with reasons and no automatic rank.
 
-Also create `Overall Weight Loss`. Do not create `Overall Fat Loss` or `Overall Muscle Gain`. Follow [Weekly overall reports](weekly-overall-reports.md) for Baseline logic, scheduled week-to-week comparisons, Overall Baseline-to-latest Weight logic, required columns, missing-data behavior, sorting, and highlighting.
+Also create `Overall-Weight Loss`, `Overall-Fat Loss`, and `Overall-Muscle Gain`. Follow [Final ranking rules](final-ranking-rules.md) and [Weekly overall reports](weekly-overall-reports.md).
+
+### Weight Gain category
+
+When Weight Gain registrations are supplied, create `Weight Gain`, `W1-Weight Gain`, `W2-Weight Gain`, `W3-Weight Gain`, and `Overall Weight Gain`.
+
+- Combine explicit registrations with participants whose Baseline Weight is below `Height - 105`.
+- Do not duplicate an explicit participant already present in the main source data.
+- Keep every Weight Gain candidate visible but INVALID and unranked on all Weight Loss sheets.
+- Keep Weight Gain candidates eligible for Fat Loss and Muscle Gain sheets unless another rule excludes them.
+- Rank valid Weight Gain comparisons by quality tier: positive Weight and Muscle; positive Weight only; positive Muscle only; then no positive gain. Within a tier, sort Weight Change descending, then Muscle Change descending.
+- Include every candidate on each Weight Gain comparison sheet. Put `REVIEW` rows after ranked rows and `ABSENT / NO DATA` rows last.
+- Overall uses Baseline and the defined Final Week; missing either required endpoint is INVALID.
 
 ### Dashboard
 
-Create one `Dashboard` sheet containing Top 3 Weight Loss, Fat Loss, and Muscle Gain performers for each weekly period, plus Overall Weight Loss Top 5 only.
+Create one `Dashboard` sheet containing weekly Top 3 for all categories, Overall Weight Loss Top 5, Overall Fat Loss Top 3, and Overall Muscle Gain Top 3.
 
-Show at most Week 1 through Week 3 plus Overall. Weekly sections compare adjacent scheduled dates and omit a participant from a category when either required ranking-metric reading is unavailable. Overall compares first/start Weight with latest/end Weight; it is not a copy of the final weekly ranking.
+Show W1 through W3 plus Overall. Weekly sections compare adjacent scheduled dates. Overall compares Baseline with the defined Final Week and never substitutes an earlier reading.
 
 Follow [Dashboard rules](dashboard-rules.md) for period selection, eligibility, fields, layout, formulas, and validation.
 

@@ -36,15 +36,15 @@ Rules:
 - Never coerce source text to zero.
 - Never interpolate, carry forward, average, or invent a missing measurement.
 - Age and Height may be linked from their single available source cells. They are not used to infer missing metric readings.
-- Preserve numeric outliers exactly as entered. For ranking eligibility, flag absolute relative changes above 5% for a weekly comparison and above 20% for Baseline-to-Final Overall. Do not correct the source value automatically.
+- Preserve numeric outliers exactly as entered. For W1-W3, OUTLIER means an absolute Weight change above 4 kg, Fat change above 3 points, or Muscle change above 3 points. Exact limits are valid. Do not apply these limits to Overall or correct source values automatically.
 
 ## Dates
 
 - Keep dates as native Excel dates, never display-only text in data cells.
 - Sort dates ascending for consolidation and comparisons.
-- Use the first and latest available dates separately for Weight, Body Fat, and Muscle.
+- Map a common ordered schedule of Baseline, Week 1, Week 2, Week 3, and defined Final Week.
 - Do not assume that all participants or clubs share the same available dates.
-- Weekly category comparisons use the workbook's adjacent scheduled date slots: W1 is dates 1→2, W2 is dates 2→3, and W3 is dates 3→4. Do not jump over a missing scheduled reading. Omit the participant from that weekly category sheet unless both scheduled readings for its ranking metric are numeric. Overall continues to use the participant's first and final available numeric readings.
+- Weekly comparisons use adjacent scheduled slots: W1 is 1→2, W2 is 2→3, and W3 is 3→4. Do not jump over missing readings. Overall uses Baseline→defined Final Week and never substitutes an earlier personal latest reading.
 
 ## Units
 
@@ -57,6 +57,13 @@ Rules:
 - All downstream report calculations must reference `Rdata` or the original club sheets.
 - Use bounded cell ranges. Never use full-column formula references for rankings, leaders, or changes.
 - Blank and nonnumeric readings must not participate in subtraction, minima, maxima, leaders, or rankings.
+
+## Weight Gain classification
+
+- Match explicit Weight Gain registrations to existing participants by normalized Club and Name; do not create duplicate participant records.
+- Also classify a participant as Weight Gain when both Baseline Weight and Height are numeric and `Baseline Weight < Height - 105`.
+- Explicit registration takes precedence as the displayed classification source.
+- Once classified, keep the participant visible but INVALID and unranked on Weight Loss sheets while preserving the source record and measurements.
 
 ## Sensitive data
 
